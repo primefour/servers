@@ -10,7 +10,6 @@ import (
 	"time"
 
 	l4g "github.com/alecthomas/log4go"
-	"github.com/primefour/servers/api"
 	"github.com/primefour/servers/api4"
 	"github.com/primefour/servers/app"
 	"github.com/primefour/servers/einterfaces"
@@ -64,10 +63,9 @@ func runServer(configFileLocation string) {
 
 	app.NewServer()
 	app.InitStores()
-	api.InitRouter()
+	api4.InitRouter()
 	wsapi.InitRouter()
 	api4.InitApi(false)
-	api.InitApi()
 	wsapi.InitApi()
 	web.InitWeb()
 

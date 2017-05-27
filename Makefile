@@ -8,9 +8,9 @@ GOPATH ?= $(GOPATH:):./vendor
 GOFLAGS ?= $(GOFLAGS:)
 GO=go
 GO_LINKER_FLAGS ?= -ldflags \
-				   "-X github.com/primefour/http_server/model.BuildNumber=$(BUILD_NUMBER)\
-				    -X 'github.com/primefour/http_server/model.BuildDate=$(BUILD_DATE)'\
-				    -X github.com/primefour/http_server/model.BuildHash=$(BUILD_HASH)"
+				   "-X github.com/primefour/servers/model.BuildNumber=$(BUILD_NUMBER)\
+				    -X 'github.com/primefour/servers/model.BuildDate=$(BUILD_DATE)'\
+				    -X github.com/primefour/servers/model.BuildHash=$(BUILD_HASH)"
 
 .prebuild:
 	@echo Preparation for running go code

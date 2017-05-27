@@ -6,15 +6,13 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"os"
-	"os/exec"
-
-	"github.com/primefour/servers/api"
 	"github.com/primefour/servers/api4"
 	"github.com/primefour/servers/app"
 	"github.com/primefour/servers/utils"
 	"github.com/primefour/servers/wsapi"
 	"github.com/spf13/cobra"
+	"os"
+	"os/exec"
 	"os/signal"
 	"syscall"
 )
@@ -47,10 +45,9 @@ func init() {
 func webClientTestsCmdF(cmd *cobra.Command, args []string) error {
 	initDBCommandContextCobra(cmd)
 	utils.InitTranslations(utils.Cfg.LocalizationSettings)
-	api.InitRouter()
+	api4.InitRouter()
 	wsapi.InitRouter()
 	api4.InitApi(false)
-	api.InitApi()
 	wsapi.InitApi()
 	setupClientTests()
 	app.StartServer()
@@ -63,10 +60,9 @@ func webClientTestsCmdF(cmd *cobra.Command, args []string) error {
 func serverForWebClientTestsCmdF(cmd *cobra.Command, args []string) error {
 	initDBCommandContextCobra(cmd)
 	utils.InitTranslations(utils.Cfg.LocalizationSettings)
-	api.InitRouter()
+	api4.InitRouter()
 	wsapi.InitRouter()
 	api4.InitApi(false)
-	api.InitApi()
 	wsapi.InitApi()
 	setupClientTests()
 	app.StartServer()
