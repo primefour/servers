@@ -17,6 +17,7 @@ import (
 	"database/sql/driver"
 	"errors"
 	"fmt"
+	l4g "github.com/alecthomas/log4go"
 	"reflect"
 	"strconv"
 	"strings"
@@ -304,6 +305,7 @@ func (m *DbMap) createTables(ifNotExists bool) error {
 	for i := range m.tables {
 		table := m.tables[i]
 		sql := table.SqlForCreate(ifNotExists)
+		l4g.Debug("sql %s ", sql)
 		_, err = m.Exec(sql)
 		if err != nil {
 			break

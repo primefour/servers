@@ -26,9 +26,9 @@ import (
 
 	l4g "github.com/alecthomas/log4go"
 	"github.com/disintegration/imaging"
+	s3 "github.com/minio/minio-go"
 	"github.com/primefour/servers/model"
 	"github.com/primefour/servers/utils"
-	s3 "github.com/minio/minio-go"
 	"github.com/rwcarlsen/goexif/exif"
 	_ "golang.org/x/image/bmp"
 )

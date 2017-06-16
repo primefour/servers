@@ -5,9 +5,9 @@ package wsapi
 
 import (
 	l4g "github.com/alecthomas/log4go"
-	"github.com/mattermost/platform/app"
-	"github.com/mattermost/platform/model"
-	"github.com/mattermost/platform/utils"
+	"github.com/primefour/servers/app"
+	"github.com/primefour/servers/model"
+	"github.com/primefour/servers/utils"
 )
 
 func InitSystem() {

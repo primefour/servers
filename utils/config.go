@@ -290,9 +290,11 @@ func LoadConfig(fileName string) {
 	needSave := len(config.SqlSettings.AtRestEncryptKey) == 0 || len(*config.FileSettings.PublicLinkSalt) == 0 ||
 		len(config.EmailSettings.InviteSalt) == 0
 
+	l4g.Debug("xpanic configure file fail")
 	config.SetDefaults()
 
 	if err := config.IsValid(); err != nil {
+		l4g.Debug("panic configure file fail")
 		panic(T(err.Id))
 	}
 
@@ -305,15 +307,18 @@ func LoadConfig(fileName string) {
 	}
 
 	if err := ValidateLocales(&config); err != nil {
+		l4g.Debug("panic configure file fail")
 		panic(T(err.Id))
 	}
 
 	if err := ValidateLdapFilter(&config); err != nil {
+		l4g.Debug("panic configure file fail")
 		panic(T(err.Id))
 	}
 
 	configureLog(&config.LogSettings)
 
+	l4g.Debug("panic configure file fail")
 	if config.FileSettings.DriverName == model.IMAGE_DRIVER_LOCAL {
 		dir := config.FileSettings.Directory
 		if len(dir) > 0 && dir[len(dir)-1:] != "/" {
@@ -337,7 +342,10 @@ func LoadConfig(fileName string) {
 		samlI.ConfigureSP()
 	}
 
+	l4g.Debug("panic configure file fail")
 	SetDefaultRolesBasedOnConfig()
+
+	l4g.Debug("panic configure file fail")
 	SetSiteURL(*Cfg.ServiceSettings.SiteURL)
 }
 
@@ -506,6 +514,12 @@ func ValidateLdapFilter(cfg *model.Config) *model.AppError {
 
 func ValidateLocales(cfg *model.Config) *model.AppError {
 	locales := GetSupportedLocales()
+	l4g.Debug("lens of locales is %d ==> %v ", len(locales), locales)
+
+	if cfg.LocalizationSettings.DefaultServerLocale != nil {
+		l4g.Debug(" cfg.LocalizationSettings.DefaultServerLocale = %s ", *cfg.LocalizationSettings.DefaultServerLocale)
+	}
+
 	if _, ok := locales[*cfg.LocalizationSettings.DefaultServerLocale]; !ok {
 		return model.NewLocAppError("ValidateLocales", "utils.config.supported_server_locale.app_error", nil, "")
 	}
@@ -516,6 +530,7 @@ func ValidateLocales(cfg *model.Config) *model.AppError {
 
 	if len(*cfg.LocalizationSettings.AvailableLocales) > 0 {
 		for _, word := range strings.Split(*cfg.LocalizationSettings.AvailableLocales, ",") {
+			l4g.Debug("word %s ", word)
 			if word == *cfg.LocalizationSettings.DefaultClientLocale {
 				return nil
 			}

@@ -211,7 +211,7 @@ func setupConnection(con_type string, driver string, dataSource string, maxIdle 
 	if driver == "sqlite3" {
 		dbmap = &gorp.DbMap{Db: db, TypeConverter: mattermConverter{}, Dialect: gorp.SqliteDialect{}}
 	} else if driver == model.DATABASE_DRIVER_MYSQL {
-		dbmap = &gorp.DbMap{Db: db, TypeConverter: mattermConverter{}, Dialect: gorp.MySQLDialect{Engine: "InnoDB", Encoding: "UTF8MB4"}}
+		dbmap = &gorp.DbMap{Db: db, TypeConverter: mattermConverter{}, Dialect: gorp.MySQLDialect{Engine: "MyISAM", Encoding: "UTF8MB4"}}
 	} else if driver == model.DATABASE_DRIVER_POSTGRES {
 		dbmap = &gorp.DbMap{Db: db, TypeConverter: mattermConverter{}, Dialect: gorp.PostgresDialect{}}
 	} else {

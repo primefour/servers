@@ -73,7 +73,7 @@ type Client struct {
 // NewClient constructs a new client with convienence methods for talking to
 // the server.
 func NewClient(url string) *Client {
-	return &Client{url, url + API_URL_SUFFIX_V3, &http.Client{}, "", "", "", "", "", ""}
+	return &Client{url, url + API_URL_SUFFIX, &http.Client{}, "", "", "", "", "", ""}
 }
 
 func closeBody(r *http.Response) {

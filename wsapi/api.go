@@ -4,7 +4,7 @@
 package wsapi
 
 import (
-	"github.com/mattermost/platform/app"
+	"github.com/primefour/servers/app"
 )
 
 func InitRouter() {
