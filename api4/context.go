@@ -142,7 +142,9 @@ func (h handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set(model.HEADER_CLUSTER_ID, einterfaces.GetClusterInterface().GetClusterId())
 	}
 
-	w.Header().Set("Content-Type", "application/json")
+	//w.Header().Set("Content-Type", "application/json")
+
+	w.Header().Set("Content-Type", "text/html")
 
 	if r.Method == "GET" {
 		w.Header().Set("Expires", "0")
